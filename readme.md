@@ -25,5 +25,6 @@ pip install git+https://github.com/Inzaniak/tasKobra@master
 - Schedule Edit
 ---
 ## Made by
-![My Logo](images/inzaniak.png)  
+<img src="images/inzaniak.png" width="100" height="100">   
+
 Personal Website: https://inzaniak.github.io
