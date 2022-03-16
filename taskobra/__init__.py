@@ -12,7 +12,7 @@ def run(cmd):
 class Task:
 
     def __init__(self, name, folder=''):
-        """A pyrunner Task object.
+        """A tasKobra Task object.
 
         Args:
             name (str): The name of the task.
