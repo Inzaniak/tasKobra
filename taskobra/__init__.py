@@ -20,7 +20,11 @@ class Task:
             debug (bool, optional): If True, will print the command being run. Defaults to False.
         """        
         self.name = name
-        self.folder = folder
+        if folder != '' and folder[-1] != '\\' and folder[-1] != '/':            
+            folder = folder.replace('/', '\\')
+            self.folder = f'{folder}\\'
+        else:
+            self.folder = folder.replace('/', '\\')
         self.existing = False
         self.python_path = PYTHON_PATH
         self.schedule_string = ''
@@ -48,7 +52,6 @@ class Task:
             check_exists = run(f'Get-ScheduledTaskInfo -TaskName "{self.name}"')
         else:
             check_exists = run(f'Get-ScheduledTaskInfo -TaskName "{self.name}" -TaskPath "\\{self.folder}"')
-        print(check_exists)
         if check_exists.returncode == 0:
             self.attrs = {el.split(':', 1)[0]: el.split(':', 1)[
                 1] for el in check_exists.stdout.decode('utf-8').split('\r\n') if el != ''}
