@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='taskobra',
-    version='0.0.1',    
+    version='0.0.2',    
     description='A Python package to run scripts in a scheduled task.',
     url='',
     author='Umberto Grando',

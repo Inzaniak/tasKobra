@@ -129,6 +129,7 @@ class Task:
             run(f'Disable-ScheduledTask -TaskName "{self.name}" -TaskPath "{self.folder}"')
             self.print(f'Task disabled: {self.folder}{self.name}')
 
+
     def enable_task(self):
         """Enables the task from the windows task scheduler.
         """        
