@@ -14,7 +14,7 @@ task.create_task('PATH/TO/SCRIPT.py', 'USERNAME', 'PASSWORD')  # WITH OTHER USER
 # Enable disable a task
 task.disable_task()
 task.enable_task()
-# Start/Stop a Tast
+# Start/Stop a Task
 task.run_task()
 task.stop_task()
 # Last Run Info
