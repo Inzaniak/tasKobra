@@ -1,4 +1,5 @@
 ![tasKobra](images/logo.png)  
+![tasKobra](images/banner.png)  
 Taskobra is a lightweight and easy way to manage windows schedules programmatically.
 It uses Powershell commands under the hood to create and delete tasks in the scheduler:  
 ```python
