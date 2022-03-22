@@ -179,3 +179,97 @@ class Task:
                 1] for el in results.split('\r\n') if el != ''}
             self.last_run = {k.strip(): v.strip() for k, v in self.attrs.items()}
             self.print(f'Last run time for task: {self.folder}{self.name}')
+            
+            
+class Service:
+
+    def __init__(self, name, **kwargs):
+        """A tasKobra Service object.
+        
+        You'll need to download nssm from here:
+        https://nssm.cc/download
+        You'll also need to add it to your PATH and run the python script as Admin.
+
+        Args:
+            name (str): The name of the service.
+            debug (bool, optional): If True, will print the command being run. Defaults to False.
+        """        
+        self.name = name
+        self.existing = False
+        self.python_path = PYTHON_PATH
+        self.schedule_string = ''
+        self.additional_args = {}
+        self.debug = False
+        self.__dict__.update(kwargs)
+        self.check_service()
+        self.status = None
+        
+    def print(self, text):
+        """Prints text to the console, if debug is True.
+
+        Args:
+            text (str): The text to print.
+        """        
+        if self.debug:
+            print(text)
+        
+    def check_service(self):
+        """Checks if the service exists.
+        """    
+        check_exists = run(f'nssm.exe status "{self.name}"')
+        if check_exists.returncode == 0:
+            stdout = check_exists.stdout.decode('utf-16')
+            self.print(stdout)
+            self.status = stdout
+            self.existing = True
+
+    def create_service(self, script_path):
+        """Creates a service.
+        """        
+        if not self.existing:
+            self.print(f'Creating service: {self.name}')
+            out = run(f'nssm.exe install "{self.name}" "{self.python_path}" "{script_path}"')
+            self.print(out)
+            self.print(f'Service created: {self.name}')
+            self.check_service()
+            
+    def remove_service(self):
+        """Removes a service.
+        """        
+        if self.existing:
+            self.print(f'Removing service: {self.name}')
+            run(f'nssm.exe remove "{self.name}" confirm')
+            self.print(f'Service removed: {self.name}')
+            self.existing = False
+    
+    def start_service(self):
+        """Starts a service.
+        """        
+        if self.existing:
+            self.print(f'Starting service: {self.name}')
+            run(f'nssm.exe start "{self.name}"')
+            self.print(f'Service started: {self.name}')
+            self.check_service()
+            print(f"Status is {self.status}")
+    
+    def restart_service(self):
+        """Restarts a service.
+        """        
+        if self.existing:
+            self.print(f'Restarting service: {self.name}')
+            run(f'nssm.exe restart "{self.name}"')
+            self.print(f'Service restarted: {self.name}')
+            self.check_service()
+            print(f"Status is {self.status}")
+            
+    def stop_service(self):
+        """Stops a service.
+        """        
+        if self.existing:
+            self.print(f'Stopping service: {self.name}')
+            run(f'nssm.exe stop "{self.name}"')
+            self.print(f'Service stopped: {self.name}')
+            self.check_service()
+            print(f"Status is {self.status}")
+    
+    
