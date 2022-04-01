@@ -30,15 +30,16 @@ service = Service("MyService")
 service.create_service("PATH/TO/SCRIPT.py")
 service.start_service()
 ```
+# Tutorial
+If you need some help you can find 2 tutorials here:  
+Quickstart: https://medium.com/p/60dbd79add7b  
+Windows Service: https://python.plainenglish.io/turn-your-python-code-into-a-windows-service-in-3-steps-a109193d5ecc
 
----
-## Disclaimer
+# Disclaimer
 This package is a WIP and it's not meant to be used in production environments. **Use it at your own risk!**
 
 
----
-
-## Installation
+# Installation
 To install the library you'll need to run the following command in your terminal:
 ```
 pip install git+https://github.com/Inzaniak/tasKobra@master
