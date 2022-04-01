@@ -71,5 +71,9 @@ $env:Path += ';C:\PATH_TO_win64_FOLDER'
 ## Made by Inzaniak
 <img src="images/big_banner.png">   
 
-Personal Website: https://inzaniak.github.io  
+Personal Website: https://inzaniak.github.io 
+ 
 If you'd like to support my work consider subscribing to medium with my referral: https://medium.com/@inzaniak/membership
+
+If you don't want to activate a subscription plan, but you'd still like to support me consider buying my music from Bandcamp:  
+https://inzaniak.bandcamp.com
